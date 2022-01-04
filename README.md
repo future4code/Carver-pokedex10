@@ -1,9 +1,9 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Pessoa 1 - Eliana Cristina de Deus Santos
+- Pessoa 2 - Renan Lopresti Lage
+- Pessoa 3 - Kyriale Vasconcelos Morant Cavalcanti
 
 Link do Surge: www.link.com.br
 
