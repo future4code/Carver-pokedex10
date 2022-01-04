@@ -2,15 +2,15 @@ import { createTheme } from '@mui/material/styles'
 import { primaryColor, neutraColor } from './color'
 
 const theme = createTheme({
-    palette: {
-        primary: {
-            main: primaryColor,
-            contrastText: 'white',
+ palette: {
+  primary: {
+   main: primaryColor,
+   contrastText: 'white',
 
-        },
-        text:{
-            primary:neutraColor
-        }
-    }
+  },
+  text: {
+   primary: neutraColor
+  }
+ }
 })
 export default theme;
