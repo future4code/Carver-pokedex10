@@ -6,24 +6,24 @@ import Pokedex from '../pages/PokedexPage'
 
 const Router = () => {
 
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route exact path="/pokedex">
-                    <Pokedex />
-                </Route>
-                <Route exact path="/details">
-                    <DetailsPokemom />
-                </Route>
-                <Route>
-                    <div>Erro: página não encontrada</div>
-                </Route>
-            </Switch>
-        </BrowserRouter>
-    );
+ return (
+  <BrowserRouter>
+   <Switch>
+    <Route exact path="/">
+     <Home />
+    </Route>
+    <Route exact path="/pokedex">
+     <Pokedex />
+    </Route>
+    <Route exact path={`/details/:id`}>
+     <DetailsPokemom />
+    </Route>
+    <Route>
+     <div>Erro: página não encontrada</div>
+    </Route>
+   </Switch>
+  </BrowserRouter>
+ );
 };
 
 export default Router;

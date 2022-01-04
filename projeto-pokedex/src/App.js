@@ -6,12 +6,12 @@ import theme from "./constants/theme";
 
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <Router />
-    </ThemeProvider>
-  );
+ return (
+  <ThemeProvider theme={theme}>
+   <Header />
+   <Router />
+  </ThemeProvider>
+ );
 }
 
 export default App;
