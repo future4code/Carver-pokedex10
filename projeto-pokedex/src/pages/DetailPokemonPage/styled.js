@@ -8,8 +8,13 @@ justify-content: space-evenly;
 `
 export const CardImg = styled.div`
 height: 25vh;
+display: flex;
+flex-direction: column;
+`
+export const Img = styled.img`
+width: 25vh;
+margin-top: 10vh;
 background: rgb(241, 241, 241);
-
 `
 export const Card1 = styled.div`
 background: rgb(241, 241, 241);
