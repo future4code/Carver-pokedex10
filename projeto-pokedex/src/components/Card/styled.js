@@ -1,29 +1,27 @@
+import { CardContent } from '@mui/material'
 import styled from 'styled-components'
 
-export const CardService = styled.div`
+export const CardService = styled(CardContent)`
 display: flex;
-box-shadow: 2px 2px 2px gray;
 flex-direction: column;
 align-items: center;
-border-radius: 5px; 
-width: 100%;
-background-color: #EEEEEE;
-margin: 0;
+border: 2px solid orange;
+border-radius: 10px;
+margin: 10px;
 padding: 0;
-position: static;
 
 `
-export const TextCard = styled.div`
-display: flex;
-flex-direction: column;
-color:#000000;
+export const ImgCard = styled.div`
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    img{
+        height:12rem;
+        width: 170px;
+    }
 
-p{
-  margin: 0 16px;
-  padding: 10px;
-  
-
-}
 `
 export const Buttons = styled.div`
 display: flex;
