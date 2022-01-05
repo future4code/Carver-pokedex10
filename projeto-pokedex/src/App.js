@@ -9,11 +9,12 @@ import { GlobalContext } from './context/GlobalContext';
 
 function App() {
     const [pokemons, setPokemons] = useState([])
+    const [title, setTitle] = useState('Lista de Pokémons')
 
     return (
-        <GlobalContext.Provider value={{ pokemons, setPokemons }}>
+        <GlobalContext.Provider value={{ pokemons, setPokemons, title, setTitle }}>
             <ThemeProvider theme={theme}>
-                <Header />
+                <Header title={title} />
                 <Router />
             </ThemeProvider>
 
