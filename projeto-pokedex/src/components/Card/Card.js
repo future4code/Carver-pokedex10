@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { Box, Button } from '@mui/material';
-import { CardService, TextCard, Buttons, ImgCard} from './styled';
-import { CardContent } from '@mui/material';
+import { CardService, Buttons, ImgCard } from './styled';
 import { goToDetails } from '../../router/coordinator'
 import { useHistory } from "react-router-dom";
 import { BASE_URL } from '../../constants/url'
 import axios from "axios";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const Card = () => {
     const history = useHistory()
-    const [pokemons, setPokemons] = useState([])
+    const { pokemons, setPokemons } = useContext(GlobalContext);
 
     useEffect(() => {
         axios.get(BASE_URL)
@@ -49,15 +49,15 @@ const Card = () => {
                     sx={{
                         gridColumn: { xs: 'span 6', sm: 'span 2', md: 'span 2', lg: 'span 2', xl: 'span 1' },
                     }}>
-                    
-                        <ImgCard>
-                            <img src={pokemom.imagem} alt={pokemom.name} />
-                        </ImgCard>
-                        <Buttons>
-                            <Button>Adicionar a Pokédex</Button>
-                            <Button onClick={() => goToDetails(history)}>Ver detalhes</Button>
-                        </Buttons>
-                    
+
+                    <ImgCard>
+                        <img src={pokemom.imagem} alt={pokemom.name} />
+                    </ImgCard>
+                    <Buttons>
+                        <Button variant="text">Adicionar a Pokédex</Button>
+                        <Button variant="text" onClick={() => goToDetails(history)}>Ver detalhes</Button>
+                    </Buttons>
+
                 </CardService>
             ))}
 
