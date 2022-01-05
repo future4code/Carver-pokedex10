@@ -7,5 +7,5 @@ export const goToPokedex = (history) => {
 };
 
 export const goToDetails = (history) => {
- history.push(`/details/${"11"}`);
+ history.push(`/details/:${"11"}`);
 };
