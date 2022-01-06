@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from "react";
 
-import { Body, CardStatus, CardTypes, CardAttacks, CardImg, Img } from './styled';
-
+import { Body,CardLeft, CardRigth, CardImg, Img } from './styled';
+import { GlobalContext } from '../../context/GlobalContext';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
@@ -32,7 +32,7 @@ const DetailsPokemonPage = () => {
 
 
  const getDetails = () => {
-  axios.get(`${BASE_URL}${pokemonDetail.name}`)
+  axios.get(`${BASE_URL}/pokemon/${pokemonDetail.name}`)
    .then((res) => {
     setPokemon(res.data)
    })

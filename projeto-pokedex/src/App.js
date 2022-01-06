@@ -9,8 +9,8 @@ function App() {
 
     const [pokemons, setPokemons] = useState([])
 
-    const states = { pokemons, pokemonDetail }
-    const setters = { setPokemons, setPokemonDetail }
+    const states = { pokemons}
+    const setters = { setPokemons}
     const [title, setTitle] = useState('')
 
     //const requests = {}
