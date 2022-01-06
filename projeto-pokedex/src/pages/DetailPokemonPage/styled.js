@@ -16,7 +16,7 @@ width: 25vh;
 margin-top: 10vh;
 background: rgb(241, 241, 241);
 `
-export const Card1 = styled.div`
+export const CardStatus = styled.div`
 background: rgb(241, 241, 241);
 align-self: center;
 height: 75%;
@@ -26,13 +26,16 @@ flex-direction: column;
 justify-content: space-around;
 padding-left: 20px;
 `
-export const Card2 = styled.div`
+export const StatusLine = styled.div`
+display: flex;
+`
+export const CardTypes = styled.div`
 background: rgb(241, 241, 241);
 height: 10%;
 display: flex;
 justify-content: space-around;
 `
-export const Card3 = styled.div`
+export const CardAttacks = styled.div`
 background: rgb(241, 241, 241);
 height: 80%;
 display: flex;
