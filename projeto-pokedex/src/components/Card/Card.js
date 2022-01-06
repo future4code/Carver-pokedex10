@@ -12,7 +12,7 @@ const Card = () => {
  const { states, setters } = useContext(GlobalContext);
 
  useEffect(() => {
-  axios.get(BASE_URL)
+  axios.get(`${BASE_URL}/pokemon?offset=20&limit=20`)
    .then((response) => {
     response.data.results.map((result) => {
      return axios.get(result.url)
