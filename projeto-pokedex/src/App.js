@@ -8,18 +8,23 @@ import { GlobalContext } from './context/GlobalContext';
 
 
 function App() {
-    const [pokemons, setPokemons] = useState([])
-    const [title, setTitle] = useState('Lista de Pokémons')
 
-    return (
-        <GlobalContext.Provider value={{ pokemons, setPokemons, title, setTitle }}>
-            <ThemeProvider theme={theme}>
-                <Header title={title} />
-                <Router />
-            </ThemeProvider>
+ const [pokemons, setPokemons] = useState([])
+ const [pokemonDetail, setPokemonDetail] = useState("https://pokeapi.co/api/v2/pokemon/1/")
 
-        </GlobalContext.Provider>
-    );
+ const states = {pokemons, pokemonDetail}
+ const setters = {setPokemons, setPokemonDetail}
+ const requests = {}
+ return (
+  <GlobalContext.Provider value={{ states, setters }}>
+   <ThemeProvider theme={theme}>
+    <Header />
+    <Router />
+   </ThemeProvider>
+
+
+  </GlobalContext.Provider>
+ );
 }
 
 export default App;

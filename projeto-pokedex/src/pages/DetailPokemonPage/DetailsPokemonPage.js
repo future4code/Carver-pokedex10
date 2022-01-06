@@ -1,60 +1,70 @@
 import axios from 'axios'
-import React, { useEffect, useState } from "react";
-import { Body, Card1, Card2, Card3, CardImg, Img } from './styled';
+import React, { useContext, useEffect, useState } from "react";
+import { Body, CardStatus, CardTypes, CardAttacks, CardImg, Img, StatusLine } from './styled';
+import { GlobalContext } from "../../context/GlobalContext";
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import List from '@mui/material/List';
+import LinearProgress from '@mui/material/LinearProgress'
 
 const DetailsPokemonPage = () => {
  const [pokemon, setPokemon] = useState({})
+ const { states, setters } = useContext(GlobalContext);
 
  useEffect(() => {
   getDetails()
  }, [])
 
  const getDetails = () => {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/2/`)
+  axios.get(`${states.pokemonDetail}`)
    .then((res) => {
     setPokemon(res.data)
-    console.log(res.data)
    })
    .catch((err) => {
     console.log(err)
    })
  }
-
+ console.log(states.pokemonDetail)
  return (
   <div>
+
    {pokemon && pokemon.sprites && (
     <Body>
      <CardImg>
       <Img src={pokemon.sprites.front_default} alt='foto de frente do pokemon' />
       <Img src={pokemon.sprites.back_default} alt='foto de costas do pokemon' />
      </CardImg>
-     <Card1>
-      <ol>
-       <li>vida:{pokemon.stats[0].base_stat}</li>
-       <li>ataque:{pokemon.stats[1].base_stat}</li>
-       <li>defesa:{pokemon.stats[2].base_stat}</li>
-       <li>ataque especial:{pokemon.stats[3].base_stat}</li>
-       <li>defesa especial:{pokemon.stats[4].base_stat}</li>
-       <li>velocidade:{pokemon.stats[5].base_stat}</li>
-      </ol>
-     </Card1>
-     <Card2>
-      <ol>
-       {pokemon.types.map((type) => {
-        return <li>{type.type.name}</li>
+
+     <CardStatus>
+      <List>
+       {pokemon.stats && pokemon.stats.map((element) => {
+        return (
+         <ListItem>
+          <ListItemText
+           sx={{ width: 120 }}
+           primary={element.stat.name}
+          />
+          <LinearProgress sx={{ width: 140, height: 6 }} variant="determinate" value={element.base_stat > 100 ? 100 : element.base_stat} />
+          <ListItemText
+           sx={{ marginLeft: 2 }}
+           primary={element.base_stat}
+          />
+         </ListItem>
+        )
        })}
-      </ol>
-     </Card2>
-     <Card3>
+      </List>
+     </CardStatus>
+     <CardTypes>
+      {pokemon.types && pokemon.types.map((element) => {
+       return <p>{element.type.name}</p>
+      })}
+     </CardTypes>
+     <CardAttacks>
       <h2>Poderes</h2>
-      <ol>
-       <li>{pokemon.moves[0].move.name}</li>
-       <li>{pokemon.moves[1].move.name}</li>
-       <li>{pokemon.moves[2].move.name}</li>
-       <li>{pokemon.moves[3].move.name}</li>
-       <li>{pokemon.moves[4].move.name}</li>
-      </ol>
-     </Card3>
+      {pokemon.moves && pokemon.moves.slice(0, 5).map((element) => {
+       return <p>{element.move.name}</p>
+      })}
+     </CardAttacks>
     </Body>
    )}
   </div>
