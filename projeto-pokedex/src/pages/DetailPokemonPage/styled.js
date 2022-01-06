@@ -33,6 +33,9 @@ flex-direction: row;
 align-items: center;
 }
 `
+export const CardType = styled.div`
+
+`
 export const CardRigth = styled.div`
 width: 30%;
 display: flex;

@@ -11,8 +11,8 @@ const theme = createTheme({
   text: {
    primary: neutraColor
   },
-  secondary:{
-      main:'#ffff'
+  secondary: {
+   main: '#ffff'
 
   }
  }
