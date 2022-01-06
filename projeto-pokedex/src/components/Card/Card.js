@@ -21,9 +21,8 @@ const Card = () => {
        setters.setPokemons(oldList => [...oldList, {
         name: result.name,
         url: result.url,
-        imagem: aux.data.sprites.front_default
+        imagem: aux.data.sprites.front_default,
        }]);
-
       }).catch((error) => {
        console.log(error)
       })
@@ -55,7 +54,7 @@ const Card = () => {
      </ImgCard>
      <Buttons>
       <Button variant="text">Adicionar a Pokédex</Button>
-      <Button variant="text" onClick={() => goToDetails(history) || setters.setPokemonDetail(pokemom.url)}>Ver detalhes</Button>
+      <Button variant="text" onClick={() => goToDetails(history, pokemom.name)}>Ver detalhes</Button>
      </Buttons>
 
     </CardService>

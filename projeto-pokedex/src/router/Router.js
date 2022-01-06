@@ -6,11 +6,12 @@ import Pokedex from '../pages/PokedexPage'
 
 const Router = () => {
 
+
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path={`/details/`} component={DetailsPokemon} />
+                <Route exact path={`/details/:name`} component={DetailsPokemon} />
                 <Route exact path="/pokedex" component={Pokedex} />
                 <Route>
                     <div>Erro: página não encontrada</div>
@@ -18,6 +19,7 @@ const Router = () => {
             </Switch>
         </BrowserRouter>
     );
+
 };
 
 export default Router;

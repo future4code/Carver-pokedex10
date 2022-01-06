@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Card from '../components/Card/Card'
+
 import { GlobalContext } from "../context/GlobalContext";
 import Header from "../layout/Header";
 import { goToPokedex } from "../router/coordinator";
@@ -9,6 +10,7 @@ import { goToPokedex } from "../router/coordinator";
 const HomePage = () => {
      const history = useHistory()
      const { setTitle } = useContext(GlobalContext)
+
 
 
      useEffect(() => {
