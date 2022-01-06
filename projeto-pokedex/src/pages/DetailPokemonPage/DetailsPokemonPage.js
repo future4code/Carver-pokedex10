@@ -1,23 +1,35 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from "react";
-import { Body, CardStatus, CardLeft, CardRigth, CardTypes, CardAttacks, CardImg, Img } from './styled';
+
+import { Body, CardStatus, CardTypes, CardAttacks, CardImg, Img } from './styled';
+
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import LinearProgress from '@mui/material/LinearProgress'
+
 import { BASE_URL } from '../../constants/url';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
+import Header from '../../layout/Header';
+import { goToHome } from '../../router/coordinator';
+import { useHistory } from 'react-router-dom';
 
 const DetailsPokemonPage = () => {
- const [pokemon, setPokemon] = useState({})
- const pokemonDetail = useParams()
+  const pokemonDetail = useParams()
+  const history = useHistory()
+  const [pokemon, setPokemon] = useState({})
+  const { states } = useContext(GlobalContext);
+  const { setTitle } = useContext(GlobalContext)
 
- useEffect(() => {
-  getDetails()
- }, [])
+
+  useEffect(() => {
+    setTitle('')
+    getDetails()
+  }, [])
+
 
  const getDetails = () => {
   axios.get(`${BASE_URL}${pokemonDetail.name}`)
@@ -30,6 +42,9 @@ const DetailsPokemonPage = () => {
  }
  return (
   <div>
+         <Header title={""}
+        leftButton={() => goToHome(history)}
+        rightButton />
    {pokemon && pokemon.sprites && (
     <Body>
      <CardLeft>
@@ -88,5 +103,6 @@ const DetailsPokemonPage = () => {
    )}
   </div>
  )
+
 }
 export default DetailsPokemonPage;
