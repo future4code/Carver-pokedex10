@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 const PokedexPage = () => {
- return (
-  <div>
-  </div>
- )
+    const { setTitle } = useContext(GlobalContext)
+
+    useEffect(() => {
+        setTitle('POKÉDEX')
+    }, [])
+    
+    return (
+        <div>
+
+        </div>
+    )
 }
 export default PokedexPage;

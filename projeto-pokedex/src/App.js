@@ -8,6 +8,7 @@ import { GlobalContext } from './context/GlobalContext';
 
 
 function App() {
+
  const [pokemons, setPokemons] = useState([])
  const [pokemonDetail, setPokemonDetail] = useState("https://pokeapi.co/api/v2/pokemon/1/")
 
@@ -20,6 +21,7 @@ function App() {
     <Header />
     <Router />
    </ThemeProvider>
+
 
   </GlobalContext.Provider>
  );

@@ -10,6 +10,10 @@ const theme = createTheme({
   },
   text: {
    primary: neutraColor
+  },
+  secondary:{
+      main:'#ffff'
+
   }
  }
 })
