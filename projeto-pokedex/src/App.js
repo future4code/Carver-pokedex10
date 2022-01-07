@@ -22,6 +22,7 @@ function App() {
      return axios.get(result.url)
       .then((aux) => {
        setPokemons(oldList => [...oldList, {
+        id: aux.data.held_items.id,
         name: result.name,
         url: result.url,
         imagem: aux.data.sprites.front_default,
