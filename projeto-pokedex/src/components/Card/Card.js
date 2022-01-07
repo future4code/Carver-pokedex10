@@ -1,47 +1,34 @@
-import React, { useContext, useEffect } from "react";
-import { Box, Button } from '@mui/material';
+import React from "react";
+import { Button } from '@mui/material';
 import { CardService, Buttons, ImgCard } from './styled';
-import { goToDetails } from '../../router/coordinator'
-import { useHistory } from "react-router-dom";
-import { GlobalContext } from "../../context/GlobalContext";
 
-const Card = () => {
- const history = useHistory()
- const { states, setters, requests } = useContext(GlobalContext);
+const Card = ({pokemon, history, goToDetails, button}) => {
 
  return (
-  <Box
+  <CardService
    sx={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(6, 1fr)',
-    rowGap: 1,
-    columnGap: 2
-
+    gridColumn: {
+     xs: 'span 6',
+     sm: 'span 2',
+     md: 'span 2',
+     lg: 'span 2',
+     xl: 'span 1'
+    },
    }}>
 
-   {states.pokemons
-    .sort(function (a, b) {
-     return a.name.localeCompare(b.name)
-    })
-    .map((pokemom) => (
-     <CardService key={pokemom.url}
-      sx={{
-       gridColumn: { xs: 'span 6', sm: 'span 2', md: 'span 2', lg: 'span 2', xl: 'span 1' },
-      }}>
+   <ImgCard>
+    <img src={pokemon.imagem} alt={pokemon.name} />
+   </ImgCard>
+   <Buttons>
+    <Button variant="text">{button}</Button>
+    <Button
+     variant="text"
+     onClick={() => goToDetails(history, pokemon.name)}
+    >Ver detalhes
+    </Button>
+   </Buttons>
 
-      <ImgCard>
-       <img src={pokemom.imagem} alt={pokemom.name} />
-      </ImgCard>
-      <Buttons>
-       <Button variant="text">Adicionar a Pokédex</Button>
-       <Button variant="text" onClick={() => goToDetails(history, pokemom.name)}>Ver detalhes</Button>
-      </Buttons>
-
-     </CardService>
-    ))}
-
-  </Box>
-
+  </CardService>
  )
 }
 export default Card;
