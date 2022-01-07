@@ -1,5 +1,5 @@
 # POKEDEX
-Projeto realizado com as tecnologias do React.js, foram utilizadas as bibliotecas do Material UI e styled-components para o design do site, para realizar as rotas foram utilizado o react router, houve integração da API do pokémon disponibilizada pelo curso. 
+Projeto realizado com a tecnologia do React.js, foram utilizadas as bibliotecas do Material UI e styled-components para o design do site, para realizar as rotas foram utilizado o react router, houve integração da API do pokémon disponibilizada pelo curso. 
 
 Nome dos integrantes: 
 - Pessoa 1 - Eliana Cristina de Deus Santos
