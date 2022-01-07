@@ -1,13 +1,11 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from "react";
-
-import { Body, CardStatus, CardTypes, CardAttacks, CardImg, Img } from './styled';
-
+import { Body, CardType, CardLeft, CardRigth, CardImg, Img } from './styled';
+import { GlobalContext } from '../../context/GlobalContext';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import LinearProgress from '@mui/material/LinearProgress'
-
 import { BASE_URL } from '../../constants/url';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
@@ -18,21 +16,18 @@ import { goToHome } from '../../router/coordinator';
 import { useHistory } from 'react-router-dom';
 
 const DetailsPokemonPage = () => {
-  const pokemonDetail = useParams()
-  const history = useHistory()
-  const [pokemon, setPokemon] = useState({})
-  const { states } = useContext(GlobalContext);
-  const { setTitle } = useContext(GlobalContext)
+ const pokemonDetail = useParams()
+ const history = useHistory()
+ const [pokemon, setPokemon] = useState({})
+ const { setters } = useContext(GlobalContext);
 
-
-  useEffect(() => {
-    setTitle('')
-    getDetails()
-  }, [])
-
+ useEffect(() => {
+  setters.setTitle('')
+  getDetails()
+ }, [])
 
  const getDetails = () => {
-  axios.get(`${BASE_URL}${pokemonDetail.name}`)
+  axios.get(`${BASE_URL}/pokemon/${pokemonDetail.name}`)
    .then((res) => {
     setPokemon(res.data)
    })
@@ -42,9 +37,9 @@ const DetailsPokemonPage = () => {
  }
  return (
   <div>
-         <Header title={""}
-        leftButton={() => goToHome(history)}
-        rightButton />
+   <Header title={""}
+    leftButton={() => goToHome(history)}
+    rightButton />
    {pokemon && pokemon.sprites && (
     <Body>
      <CardLeft>
@@ -63,9 +58,10 @@ const DetailsPokemonPage = () => {
       <Card>
        <CardContent>
         <List>
+         <Typography align='center' variant='h5'>Status</Typography>
          {pokemon.stats && pokemon.stats.map((element) => {
           return (
-           <ListItem alignItems='flex-start'>
+           <ListItem>
             <ListItemText
              sx={{ width: 120 }}
              primary={element.stat.name}
@@ -85,6 +81,7 @@ const DetailsPokemonPage = () => {
      <CardRigth>
       <Card>
        <CardContent>
+        <Typography align='center' variant='h5'>Tipos</Typography>
         {pokemon.types && pokemon.types.map((element) => {
          return <Typography variant="body1">{element.type.name}</Typography>
         })}
@@ -92,7 +89,7 @@ const DetailsPokemonPage = () => {
       </Card>
       <Card>
        <CardContent>
-        <Typography align='center' variant='h5'>Poderes</Typography>
+        <Typography align='center' variant='h5'>Ataques</Typography>
         {pokemon.moves && pokemon.moves.slice(0, 5).map((element) => {
          return <Typography variant="body1">{element.move.name}</Typography>
         })}

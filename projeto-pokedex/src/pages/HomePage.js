@@ -8,23 +8,19 @@ import { goToPokedex } from "../router/coordinator";
 
 
 const HomePage = () => {
-     const history = useHistory()
-     const { setTitle } = useContext(GlobalContext)
+ const history = useHistory()
+ const { setters } = useContext(GlobalContext);
 
+ useEffect(() => {
+  setters.setTitle('Lista de Pokémons')
+ }, [])
 
-
-     useEffect(() => {
-          setTitle('Lista de Pokémons')
-     }, [])
-
-
-
-     return (
-          <div>
-               <Header title={'Lista de Pokémons'}
-                    leftButton={() => goToPokedex(history)} />
-               <Card />
-          </div>
-     )
+ return (
+  <div>
+   <Header title={'Lista de Pokémons'}
+    leftButton={() => goToPokedex(history)} />
+   <Card />
+  </div>
+ )
 }
 export default HomePage;

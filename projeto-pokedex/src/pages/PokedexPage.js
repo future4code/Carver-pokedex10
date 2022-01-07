@@ -6,19 +6,19 @@ import { goToHome } from "../router/coordinator";
 import { useHistory } from "react-router-dom";
 
 const PokedexPage = () => {
-    const history = useHistory()
-    const { setTitle } = useContext(GlobalContext)
+ const history = useHistory()
+ const { setters } = useContext(GlobalContext);
 
-    useEffect(() => {
-        setTitle('POKÉDEX')
-    }, [])
+ useEffect(() => {
+  setters.setTitle('POKÉDEX')
+ }, [])
 
-    return (
-        <div>
-            <Header title={'POKÉDEX'}
-                leftButton={() => goToHome(history)} />
-            <Pokedex />
-        </div>
-    )
+ return (
+  <div>
+   <Header title={'POKÉDEX'}
+    leftButton={() => goToHome(history)} />
+   <Pokedex />
+  </div>
+ )
 }
 export default PokedexPage;
