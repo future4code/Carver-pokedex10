@@ -12,7 +12,7 @@ function App() {
 
  const states = { pokemons, title }
  const setters = { setPokemons, setTitle }
- const requests = {  }
+ const requests = { }
 
  useEffect(() => {
    axios.get(`${BASE_URL}/pokemon?offset=0&limit=20`)
