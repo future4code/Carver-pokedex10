@@ -18,6 +18,18 @@ const HomePage = () => {
   setters.setTitle('Lista de Pokémons')
  }, [])
 
+ const pushPokedex = (pokemon) => {
+  const index = states.pokemons.findIndex((item) => item.name === pokemon.name)
+  const newPokemonsList = [... states.pokemons]
+  newPokemonsList.splice(index, 1);
+  setters.setPokemons(newPokemonsList)
+
+  const newPokedex = [...states.pokedex, pokemon]
+  const orderPokedex = newPokedex.sort((a,b) =>{
+   return a.name.localeCompare(b.name)
+  })
+  setters.setPokedex(orderPokedex)
+ }
  return (
   <div>
    <Header title={'Lista de Pokémons'}
@@ -35,6 +47,7 @@ const HomePage = () => {
      })
      .map((pokemon) => (
       <Card
+       pushPokedex={pushPokedex}
        key={pokemon.url}
        pokemon={pokemon}
        history={history}

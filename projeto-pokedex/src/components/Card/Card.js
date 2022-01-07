@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from '@mui/material';
 import { CardService, Buttons, ImgCard } from './styled';
 
-const Card = ({pokemon, history, goToDetails, button}) => {
+const Card = ({pokemon, history, goToDetails, button, pushPokedex}) => {
 
  return (
   <CardService
@@ -20,7 +20,7 @@ const Card = ({pokemon, history, goToDetails, button}) => {
     <img src={pokemon.imagem} alt={pokemon.name} />
    </ImgCard>
    <Buttons>
-    <Button variant="text">{button}</Button>
+    <Button variant="text" onClick={()=>pushPokedex(pokemon)}  >{button}</Button>
     <Button
      variant="text"
      onClick={() => goToDetails(history, pokemon.name)}

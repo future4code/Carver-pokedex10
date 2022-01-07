@@ -8,31 +8,32 @@ import axios from "axios";
 
 function App() {
  const [pokemons, setPokemons] = useState([])
+ const [pokedex, setPokedex] = useState([])
  const [title, setTitle] = useState('')
 
- const states = { pokemons, title }
- const setters = { setPokemons, setTitle }
- const requests = { }
+ const states = { pokemons, title, pokedex }
+ const setters = { setPokemons, setTitle, setPokedex }
+ const requests = {}
 
  useEffect(() => {
-   axios.get(`${BASE_URL}/pokemon?offset=0&limit=20`)
-    .then((response) => {
-     response.data.results.map((result) => {
-      return axios.get(result.url)
-       .then((aux) => {
-        setPokemons(oldList => [...oldList, {
-         name: result.name,
-         url: result.url,
-         imagem: aux.data.sprites.front_default,
-        }]);
-       }).catch((error) => {
-        console.log(error)
-       })
-     });
-    })
-    .catch((error) => {
-     console.log(error)
-    })
+  axios.get(`${BASE_URL}/pokemon?offset=0&limit=20`)
+   .then((response) => {
+    response.data.results.map((result) => {
+     return axios.get(result.url)
+      .then((aux) => {
+       setPokemons(oldList => [...oldList, {
+        name: result.name,
+        url: result.url,
+        imagem: aux.data.sprites.front_default,
+       }]);
+      }).catch((error) => {
+       console.log(error)
+      })
+    });
+   })
+   .catch((error) => {
+    console.log(error)
+   })
  }, []);
 
 
