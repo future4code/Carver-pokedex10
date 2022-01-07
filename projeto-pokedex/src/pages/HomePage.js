@@ -43,7 +43,7 @@ const HomePage = () => {
     }}>
     {states.pokemons
      .sort(function (a, b) {
-      return a.name.localeCompare(b.name)
+      return a.id - b.id
      })
      .map((pokemon) => (
       <Card
